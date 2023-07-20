@@ -31,41 +31,63 @@ const data = [
 const MenScreen = () => {
   return (
     <View style={{ gap: 24 }}>
-      <Text style={s`text-xl font-bold`}>
-        Indispensables, meilleures ventes
-      </Text>
+      <View style={{ gap: 10 }}>
+        <Text style={s`text-xl font-bold p-3`}>
+          Indispensables, meilleures ventes
+        </Text>
 
-      {/* <FlatList
-        data={data}
-        horizontal
-        contentContainerStyle={{ gap: 12 }}
-        renderItem={({ item, index }) => (
-          <TouchableOpacity
-            key={index}
-            style={s`h-60 w-60 rounded-lg overflow-hidden`}
-          >
-            <Image
-              source={{ uri: item.image }}
-              style={s`object-cover object-center h-full w-full`}
-            />
-          </TouchableOpacity>
-        )}
-      ></FlatList> */}
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ gap: 5 }}
-      >
-        {data.map((item, index) => (
-          <Pressable key={index} style={{ gap: 5 }}>
-            <Image
-              source={{ uri: item.image }}
-              style={s`object-cover object-center h-40 w-40 rounded-lg overflow-hidden`}
-            />
-            <Text style={s`w-32 font-semibold`}>{item.text}</Text>
-          </Pressable>
-        ))}
-      </ScrollView>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ gap: 5, paddingHorizontal: 14 }}
+        >
+          {data.map((item, index) => (
+            <Pressable key={index} style={{ gap: 5 }}>
+              <Image
+                source={{ uri: item.image }}
+                style={s`object-cover object-center h-40 w-40 rounded-lg overflow-hidden`}
+              />
+              <Text style={s`w-32 font-semibold`}>{item.text}</Text>
+            </Pressable>
+          ))}
+        </ScrollView>
+      </View>
+
+      <View style={{ gap: 5 }}>
+        <TouchableOpacity
+          style={s`h-24 flex-row justify-between items-center bg-red-300 pl-5`}
+        >
+          <Text style={s`font-bold text-white text-xl`}>Nouveautés</Text>
+          <Image
+            source={{
+              uri: "https://www.pngkit.com/png/full/766-7664698_nike-flash-sale-transparent-background-nike-trainers-air.png",
+            }}
+            style={s`w-40 h-20`}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={s`h-24 flex-row justify-between items-center bg-red-300 pl-5`}
+        >
+          <Text style={s`font-bold text-white text-xl`}>Nouveautés</Text>
+          <Image
+            source={{
+              uri: "https://cdn.shopify.com/s/files/1/2358/2817/products/nike-sb-dunk-high-pro-iso-kentucky-1-wethenew.png?v=1648224266",
+            }}
+            style={s`w-40 h-20`}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={s`h-24 flex-row justify-between items-center bg-red-300 px-5`}
+        >
+          <Text style={s`font-bold text-white text-xl`}>Nouveautés</Text>
+          <Image
+            source={{
+              uri: "https://www.nicepng.com/png/full/988-9882647_nike-soccer-ball.png",
+            }}
+            style={s`w-20 h-20`}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

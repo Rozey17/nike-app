@@ -51,14 +51,15 @@ const TabViewExample = () => {
       renderScene={renderScene}
       onIndexChange={setIndex}
       initialLayout={{ width: layout.width }}
+      swipeEnabled={false}
     />
   );
 };
 
 const HomeScreen = () => {
   return (
-    <SafeAreaView style={s`flex-1 pt-10 p-4 bg-white`}>
-      <View style={s`flex-row justify-between items-center`}>
+    <SafeAreaView style={s`flex-1 pt-10  bg-white`}>
+      <View style={s`flex-row justify-between items-center p-4`}>
         <View style={s`flex-row items-center`}>
           <Ionicons name="menu" size={24} color="black" />
           <Text style={s`ml-5 text-lg font-semibold`}>Boutique</Text>
