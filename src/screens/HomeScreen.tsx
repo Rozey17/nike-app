@@ -1,4 +1,9 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  useWindowDimensions,
+} from "react-native";
 import React from "react";
 // import { SafeAreaView } from "react-native-safe-area-context";
 import { SafeAreaView } from "react-native";
@@ -6,6 +11,49 @@ import { s } from "react-native-wind";
 import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { TabView, SceneMap } from "react-native-tab-view";
+import MenScreen from "./MenScreen";
+
+const FirstRoute = () => <MenScreen />;
+
+const SecondRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
+);
+const ThirdRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#ff4081" }} />
+);
+
+const FourthRoute = () => (
+  <View style={{ flex: 1, backgroundColor: "#673ab7" }} />
+);
+
+const renderScene = SceneMap({
+  first: FirstRoute,
+  second: SecondRoute,
+  third: ThirdRoute,
+  fourth: FourthRoute,
+});
+
+const TabViewExample = () => {
+  const layout = useWindowDimensions();
+
+  const [index, setIndex] = React.useState(0);
+  const [routes] = React.useState([
+    { key: "first", title: "First" },
+    { key: "second", title: "Second" },
+    { key: "third", title: "Third" },
+    { key: "fourth", title: "Fourth" },
+  ]);
+
+  return (
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      onIndexChange={setIndex}
+      initialLayout={{ width: layout.width }}
+    />
+  );
+};
 
 const HomeScreen = () => {
   return (
@@ -28,6 +76,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         </View>
       </View>
+      <TabViewExample />
     </SafeAreaView>
   );
 };
